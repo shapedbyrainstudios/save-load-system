@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CoinsCollectedText : MonoBehaviour
+public class CoinsCollectedText : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private int totalCoins = 0;
 
@@ -20,6 +20,22 @@ public class CoinsCollectedText : MonoBehaviour
     {
         // subscribe to events
         GameEventsManager.instance.onCoinCollected += OnCoinCollected;
+    }
+
+    public void LoadData(GameData data) 
+    {
+        foreach(KeyValuePair<string, bool> pair in data.coinsCollected) 
+        {
+            if (pair.Value) 
+            {
+                coinsCollected++;
+            }
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        // no data needs to be saved for this script
     }
 
     private void OnDestroy() 
