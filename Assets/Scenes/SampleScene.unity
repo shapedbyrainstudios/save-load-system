@@ -14103,5 +14103,13 @@ PrefabInstance:
       propertyPath: initializeDataIfNull
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7604111838645976510, guid: 85514a777ebab0f49aca60120c6d228c, type: 3}
+      propertyPath: disableDataPersistence
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604111838645976510, guid: 85514a777ebab0f49aca60120c6d228c, type: 3}
+      propertyPath: overrideSelectedProfileId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85514a777ebab0f49aca60120c6d228c, type: 3}
