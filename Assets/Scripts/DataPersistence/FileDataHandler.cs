@@ -20,6 +20,12 @@ public class FileDataHandler
 
     public GameData Load(string profileId) 
     {
+        // base case - if the profileId is null, return right away
+        if (profileId == null) 
+        {
+            return null;
+        }
+
         // use Path.Combine to account for different OS's having different path separators
         string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
         GameData loadedData = null;
@@ -56,6 +62,12 @@ public class FileDataHandler
 
     public void Save(GameData data, string profileId) 
     {
+        // base case - if the profileId is null, return right away
+        if (profileId == null) 
+        {
+            return;
+        }
+
         // use Path.Combine to account for different OS's having different path separators
         string fullPath = Path.Combine(dataDirPath, profileId, dataFileName);
         try 
