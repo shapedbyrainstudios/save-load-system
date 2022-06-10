@@ -34,9 +34,9 @@ public class SaveSlotsMenu : Menu
         {
             DataPersistenceManager.instance.ChangeSelectedProfileId(saveSlot.GetProfileId());
             SaveGameAndLoadScene();
-        } 
+        }
         // case - new game, but the save slot has data
-        else if (DataPersistenceManager.instance.HasGameData())
+        else if (saveSlot.hasData) 
         {
             confirmationPopupMenu.ActivateMenu(
                 "Starting a New Game with this slot will override the currently saved data. Are you sure?",
@@ -104,8 +104,10 @@ public class SaveSlotsMenu : Menu
         // load all of the profiles that exist
         Dictionary<string, GameData> profilesGameData = DataPersistenceManager.instance.GetAllProfilesGameData();
 
-        // loop through each save slot in the UI and set the content appropriately
+        // ensure the back button is enabled when we activate the menu
         backButton.interactable = true;
+
+        // loop through each save slot in the UI and set the content appropriately
         GameObject firstSelected = backButton.gameObject;
         foreach (SaveSlot saveSlot in saveSlots) 
         {
