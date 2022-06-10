@@ -20,6 +20,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "exit",
+                    "type": "Button",
+                    "id": "89d068cc-bd9d-488b-bc9e-9ef4b2e4f5fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -143,6 +151,17 @@
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1d5027ae-ac49-4b57-a749-9f1031ae3e56",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // This script is a basic 2D character controller that allows
 // the player to run and jump.
@@ -16,6 +17,9 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
 
     [Header("Respawn Point")]
     [SerializeField] private Transform respawnPoint;
+
+    [Header("Attributes SO")]
+    [SerializeField] private AttributesScriptableObject playerAttributesSO;
 
     // components attached to player
     private BoxCollider2D coll;
@@ -49,11 +53,34 @@ public class CharacterController2D : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data) 
     {
         this.transform.position = data.playerPosition;
+        // load the values from our game data into the scriptable object
+        playerAttributesSO.vitality = data.playerAttributesData.vitality;
+        playerAttributesSO.strength = data.playerAttributesData.strength;
+        playerAttributesSO.intellect = data.playerAttributesData.intellect;
+        playerAttributesSO.endurance = data.playerAttributesData.endurance;
     }
 
     public void SaveData(GameData data) 
     {
         data.playerPosition = this.transform.position;
+        // store the values from our scriptable object into the game data
+        data.playerAttributesData.vitality = playerAttributesSO.vitality;
+        data.playerAttributesData.strength = playerAttributesSO.strength;
+        data.playerAttributesData.intellect = playerAttributesSO.intellect;
+        data.playerAttributesData.endurance = playerAttributesSO.endurance;
+    }
+
+    private void Update() 
+    {
+        // below code just used to test exiting the scene,
+        // you probably wouldn't want to actually do this as part of your character controller script.
+        if (InputManager.instance.GetExitPressed()) 
+        {
+            // save the game anytime before loading a new scene
+            DataPersistenceManager.instance.SaveGame();
+            // load the main menu scene
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
     }
 
     private void FixedUpdate()

@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
 {
     private Vector2 moveDirection = Vector2.zero;
     private bool jumpPressed = false;
+    private bool exitPressed = false;
 
     public static InputManager instance { get; private set; }
 
@@ -47,6 +48,18 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void ExitPressed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            exitPressed = true;
+        }
+        else if (context.canceled)
+        {
+            exitPressed = false;
+        }
+    }
+
     public Vector2 GetMoveDirection() 
     {
         return moveDirection;
@@ -66,6 +79,18 @@ public class InputManager : MonoBehaviour
     public void RegisterJumpPressedThisFrame() 
     {
         jumpPressed = false;
+    }
+
+    public bool GetExitPressed() 
+    {
+        bool result = exitPressed;
+        RegisterExitPressedThisFrame();
+        return result;
+    }
+
+    public void RegisterExitPressedThisFrame() 
+    {
+        exitPressed = false;
     }
 
 }

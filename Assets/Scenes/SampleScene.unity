@@ -7612,6 +7612,7 @@ MonoBehaviour:
   jumpSpeed: 8
   gravityScale: 2
   respawnPoint: {fileID: 1928485904}
+  playerAttributesSO: {fileID: 11400000, guid: 4154671f3961811478f73399985071ad, type: 2}
 --- !u!1 &933375412
 GameObject:
   m_ObjectHideFlags: 0
@@ -8000,6 +8001,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7ea5ec66-e7df-4d26-9425-2b7f30cc5d4b
     m_ActionName: game/move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1301066656}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: ExitPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 89d068cc-bd9d-488b-bc9e-9ef4b2e4f5fe
+    m_ActionName: game/exit[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: game
@@ -14041,6 +14058,10 @@ PrefabInstance:
     - target: {fileID: 6153057867823157816, guid: 23aef64010e11264082c3e785f37e8e3, type: 3}
       propertyPath: m_Name
       value: Coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153057867823157816, guid: 23aef64010e11264082c3e785f37e8e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23aef64010e11264082c3e785f37e8e3, type: 3}
