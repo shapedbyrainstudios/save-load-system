@@ -65,7 +65,7 @@ public class FileDataHandler
                     if (rollbackSuccess)
                     {
                         // try to load again recursively
-                        loadedData = Load(profileId);
+                        loadedData = Load(profileId, false);
                     }
                 }
                 // if we hit this else block, one possibility is that the backup file is also corrupt
