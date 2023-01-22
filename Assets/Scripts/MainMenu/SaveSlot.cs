@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class SaveSlot : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SaveSlot : MonoBehaviour
     [SerializeField] private GameObject hasDataContent;
     [SerializeField] private TextMeshProUGUI percentageCompleteText;
     [SerializeField] private TextMeshProUGUI deathCountText;
+    [SerializeField] private TextMeshProUGUI timeStampText;
 
     [Header("Clear Data Button")]
     [SerializeField] private Button clearButton;
@@ -22,15 +24,15 @@ public class SaveSlot : MonoBehaviour
 
     private Button saveSlotButton;
 
-    private void Awake() 
+    private void Awake()
     {
         saveSlotButton = this.GetComponent<Button>();
     }
 
-    public void SetData(GameData data) 
+    public void SetData(GameData data)
     {
         // there's no data for this profileId
-        if (data == null) 
+        if (data == null)
         {
             hasData = false;
             noDataContent.SetActive(true);
@@ -38,7 +40,7 @@ public class SaveSlot : MonoBehaviour
             clearButton.gameObject.SetActive(false);
         }
         // there is data for this profileId
-        else 
+        else
         {
             hasData = true;
             noDataContent.SetActive(false);
@@ -47,10 +49,11 @@ public class SaveSlot : MonoBehaviour
 
             percentageCompleteText.text = data.GetPercentageComplete() + "% COMPLETE";
             deathCountText.text = "DEATH COUNT: " + data.deathCount;
+            timeStampText.text = DateTime.FromBinary(data.lastUpdated).ToShortDateString() + " " + DateTime.FromBinary(data.lastUpdated).ToShortTimeString();
         }
     }
 
-    public string GetProfileId() 
+    public string GetProfileId()
     {
         return this.profileId;
     }
